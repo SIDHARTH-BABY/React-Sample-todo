@@ -3,41 +3,41 @@ import AddTask from './AddTask';
 import ListTask from './ListTask';
 import './Todo.css';
 function ToDo() {
-  const[tasks,setTasks]=useState([])
+  const [tasks, setTasks] = useState([])
 
 
-   useEffect(()=>{
-    document.title=`you have ${tasks.length} pending task(s)`;
-   })
- 
+  useEffect(() => {
+    document.title = `you have ${tasks.length} pending task(s)`;
+  })
 
-  const addTask=(title)=>{
-    const newTask =[...tasks,{title}]
+
+  const addTask = (title) => {
+    const newTask = [...tasks, { title }]
     setTasks(newTask)
 
   }
 
-  const removeTask=(index)=>{
-    const newTask =[...tasks]
-    newTask.splice(index,1)
+  const removeTask = (index) => {
+    const newTask = [...tasks]
+    newTask.splice(index, 1)
     setTasks(newTask)
   }
 
   return (
     <>
-    <div className='todo-container'>
-      <div className='header'>TODO APP</div>
-      <div className='add-task'><AddTask addTask={addTask}/> </div>
-      <div className='tasks'>
-        {tasks.map((task,index)=>(
-          <ListTask task={task} removeTask={removeTask}
-          index={index} key={index}
-          />
+      <div className='todo-container'>
+        <div className='header'>TODO APP</div>
+        <div className='add-task'><AddTask addTask={addTask} /> </div>
+        <div className='tasks'>
+          {tasks.map((task, index) => (
+            <ListTask task={task} removeTask={removeTask}
+              index={index} key={index}
+            />
 
-        ))} </div>
-    </div>
+          ))} </div>
+      </div>
     </>
-  ) 
+  )
 }
 
 export default ToDo
